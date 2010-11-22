@@ -20,7 +20,11 @@ class Admin::CustomersController < Admin::BaseController
         render :action => 'list' and return
       end
       format.csv do
-        require 'fastercsv'
+        if RUBY_VERSION < '1.9.0'
+          require 'fastercsv'
+        else
+          require 'csv'
+        end
         send_data(
           OrderUser.get_csv_for(OrderUser.find(:all)),
           :filename => Time.now.strftime("Customer_list-%m_%d_%Y_%H-%M.csv"),

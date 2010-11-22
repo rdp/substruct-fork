@@ -202,7 +202,11 @@ class Order < ActiveRecord::Base
 
   # Gets a CSV string that represents an order list.
   def self.get_csv_for(order_list)
-    require 'fastercsv'
+     if RUBY_VERSION < '1.9.0'
+      require 'fastercsv'
+    else
+      require 'csv'
+    end
     csv_string = FasterCSV.generate do |csv|
       # Do header generation 1st
       csv << [
