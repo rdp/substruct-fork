@@ -37,4 +37,11 @@ Rails::Initializer.run do |config|
   config.gem 'htmlentities'
   # http://github.com/SunDawg/premailer
   config.gem 'sundawg_premailer', :lib => 'premailer'
+  
+end
+
+if RUBY_VERSION >= '1.9.0'
+  # use the new CSV for CSV generation...
+  require 'csv'
+  FasterCSV = CSV
 end

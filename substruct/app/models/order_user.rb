@@ -86,11 +86,6 @@ class OrderUser < ActiveRecord::Base
   
   # Returns a CSV string for customers passed in
   def self.get_csv_for(list)
-    if RUBY_VERSION < '1.9.0'
-      require 'fastercsv'
-    else
-      require 'csv'
-    end
     csv_string = FasterCSV.generate do |csv|
       # Do header generation 1st
       csv << [
