@@ -1,4 +1,3 @@
-$: << '.' if RUBY_VERSION >= '1.9.0'
 require File.dirname(__FILE__) + '/../test_helper'
 
 class AffiliatePaymentTest < ActiveSupport::TestCase
